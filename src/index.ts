@@ -1,13 +1,18 @@
 import express, { Request, Response } from 'express'
 import { urlController } from './controllers/urlController'
+import { mongoConnection } from './database/mongoConnection'
+import { config } from './config/constants'
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const host = 'http://localhost'
-const porta = '3001'
+const host = config.HOST
+const porta = config.PORTA
+
+const banco_dados = new mongoConnection()
+banco_dados.conectar()
 
 const url_controller = new urlController()
 app.post('/encurtador', url_controller.encurtador)
