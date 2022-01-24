@@ -12,9 +12,7 @@ const porta = '3001'
 const url_controller = new urlController()
 app.post('/encurtador', url_controller.encurtador)
 
-app.get('/', (req: Request, res: Response) => {
-	res.send('get request')	
-})
+app.get('/:hash', url_controller.redirecionar)
 
 app.listen(porta, () => {
 	console.log(`Servidor rodando na porta ${host}:${porta}`)

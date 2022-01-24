@@ -8,5 +8,15 @@ export class urlController {
 		const hash = shortId.generate()
 		const url_encurtada = `${config.URL_API}/${hash}`
 		res.json({  url_original, hash, url_encurtada })
-	}	
+	}
+
+	public async redirecionar (req: Request, res: Response): Promisse<void> {
+		const { hash } = req.params
+		const url = {
+			url_original: "",
+			hash: "",
+			url_encurtada: ""
+		}
+		res.redirect(url.url_original)	
+	}
 }
