@@ -19,6 +19,10 @@ app.post('/encurtador', url_controller.encurtador)
 
 app.get('/:hash', url_controller.redirecionar)
 
+app.get('/', (req: Request, res: Response) => {
+	res.sendFile(__dirname + '/index.html')
+})
+
 app.listen(porta, () => {
 	console.log(`Servidor rodando na porta ${host}:${porta}`)
 })
